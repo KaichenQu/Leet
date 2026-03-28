@@ -10,19 +10,21 @@ sleep $((RANDOM % 480))
 
 # Check if there are any changes (new/modified files)
 if git status --porcelain | grep -q .; then
-    # Stage all .py files
-    git add *.py
+    # Regenerate README from .py files
+    python3 "$REPO_DIR/generate_readme.py"
+
+    # Stage .py files + README
+    git add *.py README.md
 
     # Count new/modified files for commit message
-    ADDED=$(git diff --cached --name-only --diff-filter=A | wc -l | tr -d ' ')
-    MODIFIED=$(git diff --cached --name-only --diff-filter=M | wc -l | tr -d ' ')
-    FILES=$(git diff --cached --name-only)
+    ADDED=$(git diff --cached --name-only --diff-filter=A -- '*.py' | wc -l | tr -d ' ')
+    MODIFIED=$(git diff --cached --name-only --diff-filter=M -- '*.py' | wc -l | tr -d ' ')
+    FILES=$(git diff --cached --name-only -- '*.py')
 
     # Build commit message from changed files
     if [ "$ADDED" -gt 0 ] && [ "$MODIFIED" -gt 0 ]; then
         MSG="add ${ADDED} new solution(s), update ${MODIFIED} file(s)"
     elif [ "$ADDED" -gt 0 ]; then
-        # Extract problem names from filenames like "66.plus-one.py"
         NAMES=$(echo "$FILES" | head -3 | sed 's/\.py$//' | sed 's/^[0-9]*\.//' | sed 's/-/ /g' | tr '\n' ', ' | sed 's/,$//')
         MSG="add: ${NAMES}"
     elif [ "$MODIFIED" -gt 0 ]; then
