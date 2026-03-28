@@ -23,3 +23,4 @@ venv/
 
 # Scripts (keep local, not needed on GitHub)
 auto_commit_push.sh
+generate_readme.py
