@@ -2,7 +2,7 @@
 
 My daily LeetCode practice in Python.
 
-**Total: 3** | Easy: 2 | Medium: 1 | Hard: 0
+**Total: 4** | Easy: 3 | Medium: 1 | Hard: 0
 
 ## Progress
 
@@ -10,6 +10,7 @@ My daily LeetCode practice in Python.
 |---|---------|------------|
 | 1 | [Two Sum](https://leetcode.cn/problems/two-sum/description/) | Easy |
 | 66 | [Plus One](https://leetcode.cn/problems/plus-one/description/) | Easy |
+| 217 | [Contains Duplicate](https://leetcode.cn/problems/contains-duplicate/description/) | Easy |
 | 442 | [Find All Duplicates In An Array](https://leetcode.cn/problems/find-all-duplicates-in-an-array/description/) | Medium |
 
 ## Structure
