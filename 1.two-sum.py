@@ -62,6 +62,15 @@
 # @lc code=start
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        
+        # len(nums) 
+        # nums[i], target
+        seen = {} # Set hashmap
+        for i, n in enumerate(nums):
+            comp = target - n  # find the complement nums in hashmap: seen
+
+            if comp in seen:
+                return[seen[comp], i]
+            seen[n] = i # store the current number in seen map
+
 # @lc code=end
 
