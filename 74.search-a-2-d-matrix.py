@@ -57,6 +57,18 @@
 # @lc code=start
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        
+        m, n = len(matrix), len(matrix[0])
+        left, right = 0, m * n
+        while left < right:
+            mid = left + (right - left) // 2
+            x = matrix[mid // n][mid % n]
+            if x == target:
+                return True
+            elif x < target:
+                left = mid
+            else:
+                right = mid
+        return False
+
 # @lc code=end
 
