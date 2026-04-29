@@ -65,7 +65,7 @@ class Solution:
             if x == target:
                 return True
             elif x < target:
-                left = mid
+                left = mid + 1
             else:
                 right = mid
         return False
